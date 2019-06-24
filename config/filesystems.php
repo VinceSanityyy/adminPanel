@@ -14,6 +14,7 @@ return [
     */
 
     'default' => env('FILESYSTEM_DRIVER', 'local'),
+    // 'default' => env('DISK_TESTING', 'local'),
 
     /*
     |--------------------------------------------------------------------------

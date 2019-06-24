@@ -28,15 +28,49 @@ Auth::routes();
 Route::resource('users','UserController');
 
 
+//CRUD COLLECTIVE NEWS
+Route::resource('news', 'NewsController');
+
+//dashboard
 Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 
+
+//coindeorosos
+Route::get('/coin', 'GraphController@index')->name('coindeoro');
+
+
+//for user logout
 Route::get('/logout', 'HomeController@logout');
 
+//coindeoro landing
 
-Route::get('/', function () {
-    return view('dashboard');
+// Route::get('/coindeoro', function () {
+//     return view ('coindeoro.app');
+// });
 
+
+//home coin de oro
+Route::get('/coindeoro', function()
+{
+    // return view('coin.app');
+    return View::make('coin.news');
 });
+
+
+//show individual news
+Route::get('/shownews', function()
+ {
+//     return view('coindeoro/newsmain');
+    return View::make('coindeoro.newsshow');
+});
+
+
+
+
+//TEST FETCH DATA FROM SECOND DB
+Route::get('/test', 'GraphController@test');
+
+
 
 // Route::get('/dashboard', function(){
 //     if(Auth::user()->isAdmin ==0){

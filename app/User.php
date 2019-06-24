@@ -13,6 +13,7 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+
     /**
      * The attributes that are mass assignable.
      *
@@ -45,8 +46,10 @@ class User extends Authenticatable
 
     //CHECK IF STATUS ONLINE
 
-    public function isOnline()
-    {
-    return Cache::has('user-is-online-' . $this->id);
-    }
+    // public function isOnline()
+    // {
+    // return Cache::has('user-is-online-' . $this->id);
+    // }
+
+
 }

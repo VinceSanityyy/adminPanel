@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Bet Admin | </title>
+    <title>Admin Panel </title>
 
     <!-- Bootstrap -->
     <link href="{{ asset('vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -27,6 +27,10 @@
 
     <!-- Custom Theme Style -->
     <link href="{{ asset('build/css/custom.min.css') }}" rel="stylesheet">
+
+    <link href="{{ asset('css/parsley.css') }}" rel="stylesheet">
+
+    {!! Charts::assets() !!}
   </head>
 
   <body class="nav-md">
@@ -62,6 +66,8 @@
                   <li><a href="{{ url('/dashboard') }}"><i class="fa fa-tv"></i>Dashboard</a>
                   </li>
                   <li><a href="{{ url('/users') }}"><i class="fa fa-users"></i>User Management</span></a>
+                  </li>
+                  <li><a href="{{ url('/news') }}"><i class="fa fa-plus"></i>News</span></a>
                   </li>
                   </li>
                 </ul>
@@ -272,6 +278,7 @@
 
     <!-- Custom Theme Scripts -->
     <script src="{{ asset('build/js/custom.min.js') }}" type="c5a3deee00f8141e141a705d-text/javascript"></script>
+    <script src="{{ asset('js/parsley.min.js') }}" type="c5a3deee00f8141e141a705d-text/javascript"></script>
 <!-- Google Analytics -->
 <script type="c5a3deee00f8141e141a705d-text/javascript">
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

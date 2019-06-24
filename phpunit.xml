@@ -31,3 +31,4 @@
         <server name="SESSION_DRIVER" value="array"/>
     </php>
 </phpunit>
+<!-- <env name="DISK_TESTING" value="avatars"/> -->

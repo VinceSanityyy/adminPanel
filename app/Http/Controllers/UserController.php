@@ -51,7 +51,7 @@ class UserController extends Controller
             'password' => 'required',
           ]);
           User::create($request->all());
-          return redirect()->route('users.index')->with('success','Post created successfully');
+          return redirect()->route('users.index')->with('success','User created successfully');
     }
 
     /**
@@ -96,7 +96,7 @@ class UserController extends Controller
             'password' => 'required',
           ]);
           User::find($id)->update($request->all());
-          return redirect()->route('users.index')->with('success',' updated successfully');
+          return redirect()->route('users.index')->with('success','User updated successfully');
     }
 
     /**
@@ -109,6 +109,6 @@ class UserController extends Controller
     {
         //
         User::find($id)->delete();
-        return redirect()->route('users.index')->with('success',' deleted successfully');
+        return redirect()->route('users.index')->with('success','User deleted successfully');
     }
 }
