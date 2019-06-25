@@ -20,7 +20,7 @@
     </div>
   @endif
 
-  {!! Form::open(['route' => 'news.store', 'method' => 'POST']) !!}
+  {!! Form::open(['route' => 'news.store','enctype' => 'multipart/form-data', 'method' => 'POST']) !!}
     @include('news.form')
   {!! Form::close() !!}
 

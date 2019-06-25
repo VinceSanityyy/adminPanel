@@ -32,7 +32,7 @@ Route::resource('users','UserController');
 Route::resource('news', 'NewsController');
 
 //dashboard
-Route::get('/dashboard', 'HomeController@index')->name('dashboard');
+Route::get('/home', 'HomeController@index')->name('dashboard');
 
 
 //coindeorosos
@@ -67,19 +67,15 @@ Route::get('/shownews', function()
 
 
 
+Route::group(['middleware'=>['web']], function(){
+    Route::get('/mainshow/{id}', 'NewsController@showNews')->name('mainshow');
+
+});
+
+
+
 //TEST FETCH DATA FROM SECOND DB
 Route::get('/test', 'GraphController@test');
 
-
-
-// Route::get('/dashboard', function(){
-//     if(Auth::user()->isAdmin ==0){
-//         return view('dashboard');
-//     }
-//     else{
-//         $users['users'] = App\User::all();
-//         return view('home',$users);
-//     }
-// });
 
 

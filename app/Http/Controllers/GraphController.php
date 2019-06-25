@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\DB;
-
+use View;
 use App\News;
 use Charts;
 use App\Graph;
@@ -20,23 +20,24 @@ class GraphController extends Controller
     public function index()
     {
 
+        $gr = Graph::get()->find(1);
 
-       $graph = Charts::database(Graph::get()->find(1),'line','highcharts')
+       $graph = Charts::database(Graph::get()->find(1),'percentage','justgage')
                  ->title('Tokens')
                  ->ElementLabel('Coins Sold')
                  ->Responsive(true)
-                 ->data(Graph::get('total_tokens'))
+                 ->dimensions(1000,500)
+                 ->data(Graph::get()->find(1),('total_tokens'));
 
 
-                ;
-
-        //dd($chart);
+        // dd($gr);
 
         $news = News::all();
 
-        //dd($news);
 
-         return view ('coin.news', ['graph' => $graph, 'news'=> $news]) ;
+        //dd($news);
+        return View::make('coin.news', compact('graph','news'));
+        //  return View::make('coin.news', ['graph' => $graph, 'news'=> $news]) ;
 
 
         // return view('coin.app');

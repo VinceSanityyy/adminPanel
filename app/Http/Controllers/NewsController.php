@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\News;
 use Validator;
 use Image;
+use View;
+use Storage;
+use Illuminate\Support\Facades\Input;
 // use App\Http\Controllers\Controller;
 
 class NewsController extends Controller
@@ -47,36 +50,40 @@ class NewsController extends Controller
         $this->validate($request, array(
             'title'=>'required|max:255',
             'body'=>'required',
-            'image'=>'required'
-            //'image' => 'image|mimes:jpeg,png,jpg,gif,svg,PNG|max:2048',
+            'subtitle'=>'required',
+            // 'image'=>'required'
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg,PNG|max:2048',
         ));
 
-        if($request->hasFile('image')){
-            $request->image->store('public/image');
-            // $news->save();
-
-            $imageName = $request->image->store('public/image');
-        }
-
-
         // if($request->hasFile('image')){
-        //     $image = $request->file('image');
-        //     $filename = time() . '.' . $image->getClientOriginalExtension();
-        //     Image::make($image)->resize(300, 300)->save( storage_path('/storage' . $filename ) );
-        //     $news->image = $filename;
-        //     $news->save();
-        //   };
-
+        //     $request->image->store('public/img');
+        //     // $news->save();
+        //     $imageName = $request->image->store('public/img');
+        // }
 
 
 
         $news = new News;
         $news->title = $request->title;
+        $news->subtitle = $request->subtitle;
         $news->body = $request->body;
-        $news->image = $request->image;
+        // $news->image = $request->image;
+        if ($request->hasFile('image')){
+            //Add new photo
+                $image = $request->file('image');
+                $filename = time() . '.' . $image->getClientOriginalExtension();
+                $location = public_path('img/' . $filename);
+                Image::make($image)->resize(300,300)->save($location);
+
+                $oldFilename = $news->image;
+            //Update DB
+                $news->image = $filename;
+
+             //Delete the old photo
+                // Storage::delete($oldFilename);
+            }
 
         $news->save();
-
 
         return redirect()->route('news.index')->with('success','News created successfully');
         //  return view('news.index', $news);
@@ -121,12 +128,48 @@ class NewsController extends Controller
     public function update(Request $request, $id)
     {
         //
-        request()->validate([
-            'title' => 'required',
-            'body' => 'required',
-            'image' => 'required',
-          ]);
-          News::find($id)->update($request->all());
+        // request()->validate([
+        //     'title' => 'required',
+        //     'body' => 'required',
+        //     'image' => 'required',
+        //   ]);
+
+        //   News::find($id)->update($request->all());
+        $this->validate($request, array(
+            'title'=>'required|max:255',
+            'body'=>'required',
+            'subtitle'=>'required',
+            // 'image'=>'required'
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg,PNG|max:2048',
+        ));
+        $news = News::find($id);
+
+        // if($request->hasFile('image')){
+        //     $request->image->store('public/img');
+        //     // $news->save();
+        //     $imageName = $request->image->store('public/img');
+        // }
+
+        $news->title = $request->title;
+        $news->subtitle = $request->subtitle;
+        $news->body = $request->body;
+        // $news->image = $request->image;
+        if ($request->hasFile('image')){
+            //Add new photo
+                $image = $request->file('image');
+                $filename = time() . '.' . $image->getClientOriginalExtension();
+                $location = public_path('img/' . $filename);
+                Image::make($image)->resize(300,300)->save($location);
+
+                $oldFilename = $news->image;
+            //Update DB
+                $news->image = $filename;
+
+             //Delete the old photo
+                // Storage::delete($oldFilename);
+            }
+
+        $news->save();
           return redirect()->route('news.index')->with('success','News updated successfully');
     }
 
@@ -141,5 +184,13 @@ class NewsController extends Controller
         //
         News::find($id)->delete();
         return redirect()->route('news.index')->with('success','News deleted successfully');
+    }
+
+
+    public function showNews($id)
+    {
+        $news = News::find($id);
+       // return view('coin.shownews', compact('news'));
+        return View::make('coin.shownews', compact('news'));
     }
 }

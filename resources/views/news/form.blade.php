@@ -9,10 +9,16 @@
     </div>
     <div class="col-xs-12">
       <div class="form-group">
-        <strong>Content : </strong>
-        {!! Form::textarea('body', null, ['placeholder'=>'Content','class'=>'form-control','required' =>'']) !!}
+        <strong>Subtitle : </strong>
+        {!! Form::text('subtitle', null, ['placeholder'=>'Subtitle','class'=>'form-control','required' =>'']) !!}
       </div>
     </div>
+    <div class="col-xs-12">
+        <div class="form-group">
+          <strong>Content : </strong>
+          {!! Form::textarea('body', null, ['placeholder'=>'Content','class'=>'form-control','required' =>'']) !!}
+        </div>
+      </div>
     <div class="col-xs-12">
         <div class="form-group">
           <strong>Image : </strong>

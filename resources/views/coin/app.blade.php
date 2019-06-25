@@ -90,16 +90,18 @@
                                         <div class="col-md-6">
                                             <div class="rang-slider-main">
                                                 <div class="rang-slider-toltip">
-                                                    <span>Soft Cap <strong>$25,624</strong></span>
-                                                    <span>Hard Cap <strong>$100,000</strong></span>
+                                                    <span><strong>Token Sales Progress</strong></span>
+                                                    <br>
+                                                    <span>Total Token <strong>10,000,000 ORO</strong></span>
                                                 </div>
                                                 <div class="rang-slider">
+                                                    {{-- SLIDER --}}
                                                     <div class="rang-line">
                                                         <span></span>
                                                     </div>
                                                 </div>
                                                 <div class="rang-slider-total">
-                                                   <span>Total raised <strong>$91,000</strong></span>
+                                                    <span>Raised Amount <strong>$100,000</strong></span>
                                                    <div class="rangTotal">91<small>%</small></div>
                                                 </div>
                                             </div>
@@ -336,7 +338,7 @@
             </div>
             <!-- The Roadmap end-->
             <!-- Team sec start-->
-            <div class="team-section style-2 p-tb" id="team">
+            {{-- <div class="team-section style-2 p-tb" id="team">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-3"></div>
@@ -365,7 +367,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <!-- Team sec end-->
             <!-- FAQ Section start-->
             <div class="faq-section p-tb" id="faq">

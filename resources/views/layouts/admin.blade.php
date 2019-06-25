@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Admin Panel </title>
+    <title>Oro Admin  </title>
 
     <!-- Bootstrap -->
     <link href="{{ asset('vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -39,7 +39,7 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="{{ url('/dashboard') }}" class="site_title"><i class="fa fa-gear"></i> <span>Admin</span></a>
+              <a href="{{ url('/home') }}" class="site_title"><img src="{{asset('landing/images/logo.png')}}" height="50"/> <span>Oro Admin</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -63,7 +63,7 @@
               <div class="menu_section">
                 <h3>Navigation</h3>
                 <ul class="nav side-menu">
-                  <li><a href="{{ url('/dashboard') }}"><i class="fa fa-tv"></i>Dashboard</a>
+                  <li><a href="{{ url('/home') }}"><i class="fa fa-tv"></i>Dashboard</a>
                   </li>
                   <li><a href="{{ url('/users') }}"><i class="fa fa-users"></i>User Management</span></a>
                   </li>

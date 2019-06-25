@@ -8,6 +8,6 @@ class news extends Model
 {
     //
     protected $fillable = [
-        'title', 'body', 'image',
+        'title', 'subtitle', 'body', 'image',
     ];
 }

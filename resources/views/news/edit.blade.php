@@ -20,7 +20,7 @@
     </div>
   @endif
 
-  {!! Form::model($news, ['method'=>'PATCH','route'=>['news.update', $news->id]])!!}
+  {!! Form::model($news, ['method'=>'PATCH','enctype' => 'multipart/form-data','route'=>['news.update', $news->id]])!!}
     @include('news.form')
   {!! Form::close() !!}
 
