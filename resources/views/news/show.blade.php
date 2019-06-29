@@ -59,6 +59,14 @@
     </div>
 
 <form>
+        <div class="form-group">
+                <label for="exampleInputPassword1">Image Displayed</label>
+                ​<br>
+                    <img src="{{ asset('img/' . $news->image) }}" class="img-fluid img-thumbnail"  />
+                    {{-- <img src="{{asset('img')}}/{{$news->image}}" height="350" alt=""> --}}
+                    {{-- <img src="{{asset($news->image)}}" alt="..."> --}}
+
+          </div>
     <div class="form-group">
       <label for="exampleInputEmail1">News title</label>
       <textarea type="text" class="form-control" rows="1" disabled="true" id="exampleInputPassword1" placeholder=""> {{ $news->title }}</textarea>
@@ -72,15 +80,6 @@
         <label for="exampleInputPassword1">Content</label>
         <textarea type="textarea" rows="10" disabled="true" class="form-control" > {{ $news->body }}</textarea>
       </div>
-
-      <div class="form-group">
-            <label for="exampleInputPassword1">Image Displayed</label>
-            ​<br>
-                        <img src="{{ asset('img/' . $news->image) }}" class="img-fluid img-thumbnail"  />
-                        {{-- <img src="{{asset('img')}}/{{$news->image}}" height="350" alt=""> --}}
-                        {{-- <img src="{{asset($news->image)}}" alt="..."> --}}
-
-          </div>
       <a class="btn btn-success" href="{{ route('news.index') }}">Return</a>
   </form>
   @endsection

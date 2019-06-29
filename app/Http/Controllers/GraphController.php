@@ -13,104 +13,127 @@ use App\Graph;
 class GraphController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    * Display a listing of the resource.
+    *
+    * @return \Illuminate\Http\Response
+    */
     public function index()
     {
 
-        $gr = Graph::get()->find(1);
-
-       $graph = Charts::database(Graph::get()->find(1),'percentage','justgage')
-                 ->title('Tokens')
-                 ->ElementLabel('Coins Sold')
-                 ->Responsive(true)
-                 ->dimensions(1000,500)
-                 ->data(Graph::get()->find(1),('total_tokens'));
+        // ->groupBy('total_tokens');
+        // dd($chart);
+        // return View:make('coin.news');
+        // $chart = view('coin.news')->with('graph', $graph ,'news',$news);
 
 
-        // dd($gr);
 
         $news = News::all();
+        $graphdetails = Graph::select()->where('id', 1)->get();
 
 
-        //dd($news);
-        return View::make('coin.news', compact('graph','news'));
-        //  return View::make('coin.news', ['graph' => $graph, 'news'=> $news]) ;
+        // $users = Graph::select()->where('id',1)
+    	// 			->get();
+        $chart = Charts::database(Graph::all(), 'line', 'highcharts')
+                   ->Colors(['#ff0000', '#00ff00', '#0000ff'])
+                  ->groupByYear()
+			      ->responsive(false);
 
-
-        // return view('coin.app');
-        // return view('coindeoro.newsindex',compact('chart'));
-
-        // $chart = Charts::database(Graph::on('mysql2')->find(1),'line','highcharts')
-        // ->title('coin')
-        // ->Responsive(true);
         // dd($chart);
-        // return view('coindeoro.newsindex',['chart'=>$chart])->with('chart', $chart);
+
+        // $chart = view('coin.graph')->with('chart', $chart);
+        return view('coin.news',compact('chart','news','graphdetails'));
+
+
+
+
+    //     //get graph details for rendering individual data
+
+
+    //     $gr = Graph::get()->find(1);
+
+    //     // $graph = Charts::database($gr,'pie','highcharts')
+        // $graph = Charts::database(Graph::get()->find(1),'line','highcharts')
+    //     ->title('Tokens')
+    //     ->groupBy('total_tokens')
+    //     ->height(1000)
+    //     ->Responsive(true);
+
+
+    //     //   ->groupBy('total_tokens')
+    //     // ->data(Graph::find(1));
+
+
+    //     // dd($gr);
+    //     // dd($graphdetails);
+    //     // dd($graph);
+
+    //    return View::make('coin.news', compact('graph','news','graphdetails'));
+
+
+
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    * Show the form for creating a new resource.
+    *
+    * @return \Illuminate\Http\Response
+    */
     public function create()
     {
         //
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    * Store a newly created resource in storage.
+    *
+    * @param  \Illuminate\Http\Request  $request
+    * @return \Illuminate\Http\Response
+    */
     public function store(Request $request)
     {
         //
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    * Display the specified resource.
+    *
+    * @param  int  $id
+    * @return \Illuminate\Http\Response
+    */
     public function show($id)
     {
         //
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    * Show the form for editing the specified resource.
+    *
+    * @param  int  $id
+    * @return \Illuminate\Http\Response
+    */
     public function edit($id)
     {
         //
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    * Update the specified resource in storage.
+    *
+    * @param  \Illuminate\Http\Request  $request
+    * @param  int  $id
+    * @return \Illuminate\Http\Response
+    */
     public function update(Request $request, $id)
     {
         //
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    * Remove the specified resource from storage.
+    *
+    * @param  int  $id
+    * @return \Illuminate\Http\Response
+    */
     public function destroy($id)
     {
         //
@@ -122,20 +145,27 @@ class GraphController extends Controller
         //  $graph = DB::connection('mysql2')->select("SELECT * FROM ico_stages WHERE id = ?", [1]);
         //  dd($graph);
 
-        // $ico_stages  = new Graph;
-        // $ico_stages ->setConnection('mysql2');
+        $chart  = new Graph;
+        $chart ->setConnection('mysql2');
 
-        // $arr_product = $ico_stages->find(1);
+        $chart = Charts::database ($chart->find(1),'line','highcharts')
+        ->title('Tokens')
+        ->ElementLabel('Coins Sold')
+        ->groupBy('total_tokens')
+        ->Responsive(true);
 
-        // //DISPLAY
-        // dd($arr_product);
+        dd($chart);
+           return view('coin.testgraph', ['chart' => $chart]);
+        //DISPLAY
 
 
+        $news = News::all();
 
-    $chart = Charts::database(Graph::on('mysql2')->find(1),'line','highcharts')
-    ->title('Coins')
-    ->Responsive(true);
-     dd($chart);
+        // $chart = Charts::database(Graph::get()->find(1),'','highcharts')
+        // ->title('Coins');
+
+        // return view('coin.testgraph', ['chart' => $chart]);
+
 
 
 

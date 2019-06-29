@@ -29,7 +29,7 @@
   <header>
     <div class="container">
       <div class="row">
-        <div class="col-sm-4 logo"> <a href="cp-aluminium.html" title="Cp Aluminium"> <img class="light" src="{{asset('landing/images/logowhite.png')}}" alt="Cp Aluminium"> <img class="dark" src="{{asset('landing/images/logodark.png')}}" alt="Cp GoAluminiumld"> </a> </div>
+        <div class="col-sm-4 logo"> <a href="/coindeoro.com" title="Cp Aluminium"> <img class="light" src="{{asset('landing/images/logowhite.png')}}" alt="Cp Aluminium"> <img class="dark" src="{{asset('landing/images/logodark.png')}}" alt="Cp GoAluminiumld"> </a> </div>
         <div class="col-sm-8 main-menu">
           <div class="menu-icon"> <span class="top"></span> <span class="middle"></span> <span class="bottom"></span> </div>
           <nav>

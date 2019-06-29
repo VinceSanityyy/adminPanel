@@ -13,7 +13,8 @@
 <link rel="stylesheet"href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css">
 
 
-<div><a class="btn btn-success" style="float:right" href="{{ route('users.create') }}">Create New User</a></div>
+
+{{-- <div><a class="btn btn-success" style="float:right" href="{{ route('users.create') }}">Create New User</a></div> --}}
 
 <table id="myTable" class="table table-hover">
     <thead>
@@ -35,6 +36,7 @@
         <td>
 
         <a href="/users/{{$user->id}}/edit" class="btn btn-warning">Edit</a>
+        <a href="/users/{{$user->id}}" class="btn btn-primary">Show</a>
 
         {!! Form::open(['method' => 'DELETE', 'route'=>['users.destroy', $user->id], 'style'=> 'display:inline', 'onsubmit' => 'return confirm("Are you sure you want to delete?")']) !!}
         {!! Form::submit('Delete',['class'=> 'btn btn-danger', ]) !!}
@@ -79,6 +81,7 @@
   <script>
     $(document).ready(function() {
       $('#myTable').DataTable();
+
   } );
    </script>
 

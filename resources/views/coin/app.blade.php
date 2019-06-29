@@ -28,6 +28,11 @@
     <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
     <!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
 
+
+    {{-- progressbar --}}
+    <link rel="stylesheet" type="text/css" href="{{asset('css/loading-bar.css')}}"/>
+    <link rel="stylesheet" type="text/css" href="{{asset('css/jquery.lineProgressbar.css')}}"/>
+
 </head>
 <body>
     <!--Main Wrapper Start-->
@@ -64,7 +69,7 @@
             </div>
         </header>
         <!--Header End-->
-
+        @foreach($graphdetails as $graphs)
         <!-- Content Section Start -->
         <div class="midd-container">
             <!-- Hero Section Start -->
@@ -92,17 +97,14 @@
                                                 <div class="rang-slider-toltip">
                                                     <span><strong>Token Sales Progress</strong></span>
                                                     <br>
-                                                    <span>Total Token <strong>10,000,000 ORO</strong></span>
+                                                    <span>Total Token <strong>{{ number_format($graphs->total_tokens) }}  ORO</strong></span>
                                                 </div>
                                                 <div class="rang-slider">
-                                                    {{-- SLIDER --}}
-                                                    <div class="rang-line">
-                                                        <span></span>
-                                                    </div>
+                                                    <div id="demoprogressbar8" data-progress-color="#f1c40f"></div>
                                                 </div>
                                                 <div class="rang-slider-total">
-                                                    <span>Raised Amount <strong>$100,000</strong></span>
-                                                   <div class="rangTotal">91<small>%</small></div>
+                                                <span>Raised Amount <strong>{{ number_format($graphs->sales_token)}}  ORO</strong></span>
+                                                <div id="pers" class="rangTotal"></div><h4>%</h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -123,6 +125,7 @@
                     </div>
                 </div>
             </div>
+            @endforeach
             <!-- Hero Section End -->
             <!--About Start -->
             <div class="about-section style-2 p-tb" id="about">
@@ -171,6 +174,7 @@
                                 <div class="bf-details">
                                     <h3>Cloud Based</h3>
                                     <p>99.5% of our users' funds are kept in a cold storage with multi-signature technology</p>
+                                    <br>
                                 </div>
                             </div>
                         </div>
@@ -262,9 +266,12 @@
                                 </ul>
                             </div>
                         </div>
+
                         <div class="col-md-7">
-                            @yield('graph')
+                                @yield('graph')
+
                             <div class="we-accept-this">
+
                                 <h6><span>ACCEPTANCE:</span> BTC, ETH, BCH, LTC, DASH</h6>
                                 <img src="{{asset('landing/images/accept-icon.png')}}" alt="BTC, ETH, BCH, LTC, DASH">
                             </div>
@@ -338,7 +345,7 @@
             </div>
             <!-- The Roadmap end-->
             <!-- Team sec start-->
-            {{-- <div class="team-section style-2 p-tb" id="team">
+            <div class="team-section style-2 p-tb" id="team">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-3"></div>
@@ -347,9 +354,8 @@
                             <div class="expert-slider owl-carousel">
                                 <div class="item">
                                     <div class=" ">
-                                        <img src="{{asset('landing/images/team-medium.jpg')}}" alt="">
+                                        <img src="{{asset('landing/images/team-bg1.png')}}" alt="">
                                     </div>
-
                                 </div>
                                 <div class="item">
                                     <div class=" ">
@@ -357,17 +363,12 @@
                                     </div>
 
                                 </div>
-                                <div class="item">
-                                    <div class=" ">
-                                        <img src="{{asset('landing/images/team-medium.jpg')}}" alt="">
-                                    </div>
 
-                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div> --}}
+            </div>
             <!-- Team sec end-->
             <!-- FAQ Section start-->
             <div class="faq-section p-tb" id="faq">
@@ -576,6 +577,25 @@
             <script src="{{asset('landing/js/script.js')}}"></script>
             <script src="{{asset('landing/js/particles.js')}}"></script>
             <script src="{{asset('landing/js/gold-app.js')}}"></script>
+
+            {{-- progressbar --}}
+            <script type="text/javascript" src="{{asset('js/loading-bar.js')}}"></script>
+
+            <script type="text/javascript" src="{{asset('js/jquery.lineProgressbar.js')}}"></script>
+
+            {{-- FORMULA PERCENT --}}
+            <script>
+                var result = Math.floor(( {{$graphs->sales_token}} / {{$graphs->total_tokens}}) * 100);
+                document.getElementById("pers").innerHTML = result ;
+                // console.log(result);
+            </script>
+
+            <script>
+                $('#demoprogressbar8').LineProgressbar({
+	            percentage: {{$graphs->sales_token}} / {{$graphs->total_tokens}} * 100,
+	            fillBackgroundColor: '#f1c40f'
+                });
+            </script>
 
 </body>
 </html>

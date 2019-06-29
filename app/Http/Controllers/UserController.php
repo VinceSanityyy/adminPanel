@@ -7,6 +7,7 @@ use App\User;
 use Validator;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 
+use Illuminate\Support\Facades\Hash;
 
 
 class UserController extends Controller
@@ -45,11 +46,14 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //
+
+        //
         request()->validate([
-            'name' => 'required',
-            'email' => 'required',
-            'password' => 'required',
+            'name' =>['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string'],
           ]);
+
           User::create($request->all());
           return redirect()->route('users.index')->with('success','User created successfully');
     }

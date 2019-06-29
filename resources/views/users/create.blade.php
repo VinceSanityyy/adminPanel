@@ -23,7 +23,7 @@
     </div>
   @endif
 
-  {!! Form::open(['route' => 'users.store', 'data-parsley-validate'=>'', 'method' => 'POST']) !!}
+  {!! Form::open(['route' => 'users.store','enctype' => 'multipart/form-data', 'data-parsley-validate'=>'', 'method' => 'POST']) !!}
     @include('users.form')
   {!! Form::close() !!}
 

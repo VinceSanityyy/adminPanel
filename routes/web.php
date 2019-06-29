@@ -12,7 +12,18 @@
 */
 
 
-Auth::routes();
+// Auth::routes();
+
+
+
+
+Route::get('coindeoro.com/login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('coindeoro.com/login', 'Auth\LoginController@login');
+
+
+// Registration Routes...
+Route::get('register/', 'Auth\RegisterController@showRegistrationForm')->name('register');
+Route::post('register/', 'Auth\RegisterController@register');
 
 
 
@@ -36,7 +47,7 @@ Route::get('/home', 'HomeController@index')->name('dashboard');
 
 
 //coindeorosos
-Route::get('/coin', 'GraphController@index')->name('coindeoro');
+Route::get('/coindeoro.com', 'GraphController@index');
 
 
 //for user logout
@@ -58,11 +69,11 @@ Route::get('/coindeoro', function()
 
 
 //show individual news
-Route::get('/shownews', function()
- {
-//     return view('coindeoro/newsmain');
-    return View::make('coindeoro.newsshow');
-});
+// Route::get('/shownews', function()
+//  {
+// //     return view('coindeoro/newsmain');
+//     return View::make('coindeoro.newsshow');
+// });
 
 
 

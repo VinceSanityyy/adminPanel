@@ -4,6 +4,7 @@
 @section('content')
 {{-- SLIDER --}}
 
+{!! Charts::assets() !!}
 
 <div class="blog-section p-tb white-bg" id="press">
         <div class="container">
@@ -15,8 +16,6 @@
                     <div class="item">
                             <div class="blog-list">
                         <div class="title">
-
-
                         <div class="blog-list-img"> <a href="/mainshow/{{$data->id}}"> <img src="{{asset('img')}}/{{$data->image}}" height="350" alt=""></a></div>
                         {{-- <img src="{{ asset('img/' . $data->image) }}" class="img-fluid img-thumbnail" height="350"  /> --}}
                         <div class="blog-date"> {{ $data->created_at->format('M') }} <span> {{ $data->created_at->format('d') }}</span>  {{ $data->created_at->format('Y') }}</div>

@@ -34,4 +34,6 @@
  {!! $news->render() !!}
 </div>
 
+
+
 @endsection

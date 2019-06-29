@@ -26,7 +26,6 @@
           {!! Form::file('image', null, ['class'=>'form-control','required' =>'','files' => true ]) !!}
         </div>
       </div>
-
     <div class="col-xs-12">
       <a class="btn btn-success" href="{{ route('news.index') }}">Back</a>
       <button type="submit" class="btn  btn-primary" name="button">Submit</button>

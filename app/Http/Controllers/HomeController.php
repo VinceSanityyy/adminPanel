@@ -14,41 +14,43 @@ use Charts;
 class HomeController extends Controller
 {
     /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
+    * Create a new controller instance.
+    *
+    * @return void
+    */
     public function __construct()
     {
         $this->middleware('auth');
-        // return redirect('/dashboard');
+        // return redirect('/home');
     }
 
     /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
+    * Show the application dashboard.
+    *
+    * @return \Illuminate\Contracts\Support\Renderable
+    */
     public function index()
     {
         // //
         $count = User::count();
 
-       $chart = Charts::database(User::all(),'line','highcharts')
-                ->title('User Statistics')
-                ->groupByMonth()
-                ->Width(0)
-                ->ElementLabel('Total Users Registered')
-                ->Responsive(true);
+        $chart = Charts::database(User::all(),'line','highcharts')
+        ->title('User Statistics')
+        ->groupByDay()
 
-                $news = Charts::database(News::all(),'line','highcharts')
-                ->title('News Statistics')
-                ->groupByMonth()
-                ->Width(0)
-                ->ElementLabel('Total Articles Posted')
-                ->Responsive(true);
+        ->ElementLabel('Total Users Registered')
+        ->Responsive(true);
+
+        $news = Charts::database(News::all(),'line','highcharts')
+        ->title('News Statistics')
+        ->groupByDay()
+
+        ->ElementLabel('Total Articles Posted')
+        ->Responsive(true);
 
 
+
+        // dd($news);
 
         return view('dashboard',['chart'=>$chart, 'news'=>$news])->with('count', $count);
         // return view('dashboard', ['chart' => $chart]);
@@ -64,37 +66,37 @@ class HomeController extends Controller
         //logout user
         auth()->logout();
         // redirect to homepage
-        return redirect('/coin');
+        return redirect('/coindeoro.com');
     }
 
 
     //FETCH DATA FROM THE SECOND DATABASE
     // public function another(){
-    //     // $arr_graph = \DB::connection('mysql2')->select("SELECT * FROM ico_stages WHERE id = ?", [1]);
+        //     // $arr_graph = \DB::connection('mysql2')->select("SELECT * FROM ico_stages WHERE id = ?", [1]);
 
-    //     // $arrgraph = DB::connection('mysql2');
+        //     // $arrgraph = DB::connection('mysql2');
 
-    //     // $graph = DB::connection('mysql2')->select("SELECT * FROM ico_stages WHERE id = ?", [1]);
+        //     // $graph = DB::connection('mysql2')->select("SELECT * FROM ico_stages WHERE id = ?", [1]);
 
-    //     // $ico_stages  = new Graph;
-    //     // $ico_stages ->setConnection('mysql2');
+        //     // $ico_stages  = new Graph;
+        //     // $ico_stages ->setConnection('mysql2');
 
-    //     // $arr_product = $ico_stages->find(1);
+        //     // $arr_product = $ico_stages->find(1);
 
-    //     // //DISPLAY
-    //     // dd($arr_product);
+        //     // //DISPLAY
+        //     // dd($arr_product);
 
 
 
-    //     $count = Graph::count();
+        //     $count = Graph::count();
 
-    //     $chart = Charts::database(Graph::get()->find(1),'line','highcharts');
-    //             //  ->title('User Statistics')
-    //             //  ->groupByYear(7)
-    //             //  ->Width(0)
+        //     $chart = Charts::database(Graph::get()->find(1),'line','highcharts');
+        //             //  ->title('User Statistics')
+        //             //  ->groupByYear(7)
+        //             //  ->Width(0)
 
-    //             //  ->Responsive(true);
+        //             //  ->Responsive(true);
 
-    //     dd($chart);
-    // }
-}
+        //     dd($chart);
+        // }
+    }
