@@ -27,7 +27,7 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
 
                 </a>
-                <a href="/coindeoro.com">  <img src="{{asset('landing/images/logodark.png')}}" height="40" alt="" /> </a>
+                <a href="/">  <img src="{{asset('landing/images/logodark.png')}}" height="40" alt="" /> </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>

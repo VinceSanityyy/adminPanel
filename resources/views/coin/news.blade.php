@@ -16,11 +16,11 @@
                     <div class="item">
                             <div class="blog-list">
                         <div class="title">
-                        <div class="blog-list-img"> <a href="/mainshow/{{$data->id}}"> <img src="{{asset('img')}}/{{$data->image}}" height="350" alt=""></a></div>
+                        <div class="blog-list-img"> <a href="/article/{{$data->id}}"> <img src="{{asset('img')}}/{{$data->image}}" height="350" alt=""></a></div>
                         {{-- <img src="{{ asset('img/' . $data->image) }}" class="img-fluid img-thumbnail" height="350"  /> --}}
                         <div class="blog-date"> {{ $data->created_at->format('M') }} <span> {{ $data->created_at->format('d') }}</span>  {{ $data->created_at->format('Y') }}</div>
                         <div class="blog-list-desc">
-                        <a href="/mainshow/{{$data->id}}"> <h4 style="text-align: center;">{{$data->title}}</h4 > </a>
+                        <a href="/article/{{$data->id}}"> <h4 style="text-align: center;">{{$data->title}}</h4 > </a>
                         <p>{{$data->subtitle}}</p>
                        </div>
                     </div>

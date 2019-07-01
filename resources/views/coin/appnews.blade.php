@@ -13,7 +13,7 @@
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800" rel="stylesheet">
 <!-- Website Title -->
-{{-- <title>{{$data->title}}</title> --}}
+<title>Coin De Oro - News</title>
 <!-- Stylesheets Start -->
 <link rel="stylesheet" href="{{asset('landing/css/fontawesome.min.css')}}" type="text/css"/>
 <link rel="stylesheet" href="{{asset('landing/css/bootstrap.css')}}" type="text/css"/>
@@ -34,8 +34,8 @@
           <div class="menu-icon"> <span class="top"></span> <span class="middle"></span> <span class="bottom"></span> </div>
           <nav>
             <ul>
-              <li><a href="/coin">Home</a></li>
-              <li><a href="/coin#about">About ico</a></li>
+              <li><a href="/coindeoro.com">Home</a></li>
+              <li><a href="/coindeoro#about">About ico</a></li>
               <li><a href="/coin#token">token</a></li>
               <li><a href="/coin#roadmap">roadmap</a></li>
               <li><a href="/coin#team">team</a></li>

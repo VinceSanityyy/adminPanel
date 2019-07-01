@@ -33,7 +33,7 @@
                 <p>{{$news->body}}</p>
                   </div>
 
-                  <a href="{{ url('/coin') }}"></span>Back to home</a>
+                  <a href="{{ url('/') }}"></span>Back to home</a>
 
 
                   {{-- <div class="post-tags-list">
@@ -96,7 +96,7 @@
                             @foreach($all->slice(3) as $news)
                             <li>
                                 <div class="cp-rp-posts-image">
-                                        <a href="/mainshow/{{$news->id}}">
+                                        <a href="/article/{{$news->id}}">
                                             <img src="{{asset('img')}}/{{$news->image}}" height="70">
                                             {{-- <a href="/mainshow/{{$data->id}}"> <img src="{{asset('img')}}/{{$data->image}}"> --}}
                                         </a>

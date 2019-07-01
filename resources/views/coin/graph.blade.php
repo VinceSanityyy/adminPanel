@@ -41,9 +41,12 @@
                             <h6>End Date</h6>
                             <h5>{{ Carbon\Carbon::parse($item->end_date)->format('Y-m-d') }}<small></small></h5>
                         </div>
+
                     </div>
+
                 </div>
             </div>
+
         </div>
 
         <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
