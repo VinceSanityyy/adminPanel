@@ -3,18 +3,11 @@
 namespace App\Http\Controllers;
 use DB;
 use Illuminate\Http\Request;
-use App\User;
+use App\Roadmap;
 use Validator;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 
-use Illuminate\Support\Facades\Hash;
-
-
-
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-
-
-class UserController extends Controller
+class RoadmapController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -23,10 +16,10 @@ class UserController extends Controller
      */
     public function index()
     {
+        //
+        $roadmap = DB::table('roadmaps')->get();
 
-        $users = DB::table('users')->get();
-
-        return view('users.index', ['users' => $users]);
+        return view('roadmap.index', ['roadmap' => $roadmap]);
 
     }
 
@@ -38,7 +31,7 @@ class UserController extends Controller
     public function create()
     {
         //
-        return view('users.create');
+        return view('roadmap.create');
     }
 
     /**
@@ -50,16 +43,13 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //
-
-        //
         request()->validate([
-            'name' =>['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string'],
+            'year' =>['required', 'string', 'max:255', 'unique:roadmaps'],
+            'body' => ['required', 'string', 'max:255'],
           ]);
 
-          User::create($request->all());
-          return redirect()->route('users.index')->with('success','User created successfully');
+          Roadmap::create($request->all());
+          return redirect()->route('roadmap.index')->with('success','Created successfully');
     }
 
     /**
@@ -70,9 +60,9 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $user = User::find($id);
-        return view('users.show', compact('user'));
-
+        //
+        $roadmap = Roadmap::find($id);
+        return view('roadmap.show', compact('roadmap'));
     }
 
     /**
@@ -84,8 +74,8 @@ class UserController extends Controller
     public function edit($id)
     {
         //
-        $user = User::find($id);
-        return view('users.edit', compact('user'));
+        $roadmap = Roadmap::find($id);
+        return view('roadmap.edit', compact('roadmap'));
     }
 
     /**
@@ -99,12 +89,11 @@ class UserController extends Controller
     {
         //
         request()->validate([
-            'name' => 'required',
-            'email' => 'required',
-            'password' => 'required',
+            'year' => 'required',
+            'body' => 'required',
           ]);
-          User::find($id)->update($request->all());
-          return redirect()->route('users.index')->with('success','User updated successfully');
+          Roadmap::find($id)->update($request->all());
+          return redirect()->route('roadmap.index')->with('success',' Updated successfully');
     }
 
     /**
@@ -116,7 +105,8 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
-        User::find($id)->delete();
-        return redirect()->route('users.index')->with('success','User deleted successfully');
+        Roadmap::find($id)->delete();
+        return redirect()->route('roadmap.index')->with('success','News deleted successfully');
     }
+
 }

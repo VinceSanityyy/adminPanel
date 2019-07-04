@@ -7,7 +7,7 @@
           <div class="container">
           <h1 class="post-title">{{$news->title}}</h1>
             <ul class="breadcrumb">
-              <li><a href="/coindeoro.com">Home</a></li>
+              <li><a href="/">Home</a></li>
             <li class="current">{{$news->subtitle}}</li>
             </ul>
           </div>
@@ -45,7 +45,7 @@
                         <a href="#" class="tag-cloud-link">Investment</a>
                         <a href="#" class="tag-cloud-link">Marketing</a>
                   </div> --}}
-                  {{-- <div id="comments" class="comments-area">
+                  <div id="comments" class="comments-area">
                     <div id="respond" class="comment-respond">
                       <h3 id="reply-title" class="comment-reply-title">
                         <div class="leave-a-comment-title">Leave a <span>comment </span></div>
@@ -57,10 +57,7 @@
                             <input type="text" name="author" id="comment-author" value="" size="22" tabindex="1" aria-required="true" placeholder="Name *">
                           </div>
                           <div class="col-md-4 col-12 form-group">
-                            <input type="text" name="email" id="comment-email" value="" size="22" tabindex="2" aria-required="true" placeholder="Mail *">
-                          </div>
-                          <div class="col-md-4 col-12 form-group">
-                            <input type="text" name="url" id="comment-url" value="" size="22" tabindex="3" placeholder="Website">
+                            <input type="text" name="email" id="comment-email" value="" size="22" tabindex="2" aria-required="true" placeholder="e-Mail *">
                           </div>
                         </div>
                         <div class="row">
@@ -74,7 +71,7 @@
                       </form>
                     </div>
                   </div>
-                </article> --}}
+                </article>
               </div>
               <div class="col-md-3 sidebar">
                     {{-- <img src="{{asset('img')}}/{{$news->image}}" height="300" alt=""> --}}

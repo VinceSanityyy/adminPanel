@@ -309,40 +309,7 @@
             </div>
             <!-- Token Sale end -->
             <!-- The Roadmap  start-->
-            <div class="roadmap-sec p-tb white-sec" id="roadmap">
-                <div class="container">
-                    <div class="sec-title text-center"><h3>The Roadmap</h3></div>
-                    <div class="sub-txt text-center">
-                        <p>We are building the future of capital markets and money.</p>
-                    </div>
-                    <div class="roadmap-slider owl-carousel">
-                        <div class="item">
-                            <span>2017 - 2016</span>
-                            <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non turpis eget nisl viverra interdum.</p>
-                        </div>
-                        <div class="item">
-                            <span>2016 - 2015</span>
-                            <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non turpis eget nisl viverra interdum.</p>
-                        </div>
-                        <div class="item">
-                            <span>2015 - 2014</span>
-                            <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non turpis eget nisl viverra interdum.</p>
-                        </div>
-                        <div class="item">
-                            <span>2014 - 2013</span>
-                            <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non turpis eget nisl viverra interdum.</p>
-                        </div>
-                        <div class="item">
-                            <span>2013 - 2012</span>
-                            <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non turpis eget nisl viverra interdum.</p>
-                        </div>
-                        <div class="item">
-                            <span>2012 - 2011</span>
-                            <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non turpis eget nisl viverra interdum.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @yield('road')
             <!-- The Roadmap end-->
             <!-- Team sec start-->
             <div class="team-section style-2 p-tb" id="team">

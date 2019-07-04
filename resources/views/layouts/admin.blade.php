@@ -69,6 +69,8 @@
                   </li>
                   <li><a href="{{ url('/news') }}"><i class="fa fa-plus"></i>News</span></a>
                   </li>
+                  <li><a href="{{ url('/roadmap') }}"><i class="fa fa-road"></i>Roadmap</span></a>
+                  </li>
                   </li>
                 </ul>
               </div>

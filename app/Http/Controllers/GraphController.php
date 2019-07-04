@@ -9,6 +9,7 @@ use View;
 use App\News;
 use Charts;
 use App\Graph;
+use App\Roadmap;
 
 class GraphController extends Controller
 {
@@ -26,9 +27,10 @@ class GraphController extends Controller
         // $chart = view('coin.news')->with('graph', $graph ,'news',$news);
 
 
-
+        $allroad = Roadmap::all();
         $news = News::all();
         $graphdetails = Graph::select()->where('id', 1)->get();
+
 
 
         // $users = Graph::select()->where('id',1)
@@ -38,10 +40,10 @@ class GraphController extends Controller
                   ->groupByYear()
 			      ->responsive(false);
 
-        // dd($chart);
+        // dd($allroad);
 
         // $chart = view('coin.graph')->with('chart', $chart);
-        return view('coin.news',compact('chart','news','graphdetails'));
+        return view('coin.news',compact('chart','news','graphdetails','allroad'));
 
 
 

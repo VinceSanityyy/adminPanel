@@ -14,7 +14,7 @@
 
 // Auth::routes();
 
-
+// Auth::routes(['verify' => true]);
 
 
 Route::get('/adminlogin', 'Auth\LoginController@showLoginForm')->name('login');
@@ -38,12 +38,14 @@ Route::post('register/', 'Auth\RegisterController@register');
 //CRUD ROUTE COLLECTIVE
 Route::resource('users','UserController');
 
-
 //CRUD COLLECTIVE NEWS
 Route::resource('news', 'NewsController');
 
+//CRUD COLLECTIVE ROADMAP
+Route::resource('roadmap', 'RoadmapController');
+
 //dashboard
-Route::get('/home', 'HomeController@index')->name('dashboard');
+Route::get('/home', 'HomeController@index')->name('home');
 
 
 //coindeorosos
@@ -61,11 +63,11 @@ Route::get('/logout', 'HomeController@logout');
 
 
 //home coin de oro
-Route::get('/coindeoro', function()
-{
-    // return view('coin.app');
-    return View::make('coin.news');
-});
+// Route::get('/coindeoro', function()
+// {
+//     // return view('coin.app');
+//     return View::make('coin.news');
+// });
 
 
 //show individual news

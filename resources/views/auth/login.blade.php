@@ -5,7 +5,18 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Admin Login') }}</div>
+                {{-- <div class="card-header">{{ __('Admin Login') }}</div>
+                <div class="panel-body">
+                    @if(Session::has('message'))
+                    <div class="alert alert-success">
+                        {{ Session::get('message') }}
+                        @php
+                        Session::forget('message');
+                        @endphp
+                    </div>
+                    @endif
+                    <form class="form-horizontal" method="POST" action="{{ route('register') }}">
+                </div> --}}
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
@@ -24,6 +35,7 @@
                                 @enderror
                             </div>
                         </div>
+
 
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
@@ -57,9 +69,9 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Login') }}
                                 </button>
-
-
                             </div>
+
+
 
                         </div>
                     </form>

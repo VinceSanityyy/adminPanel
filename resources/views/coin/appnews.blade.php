@@ -29,17 +29,17 @@
   <header>
     <div class="container">
       <div class="row">
-        <div class="col-sm-4 logo"> <a href="/coindeoro.com" title="Cp Aluminium"> <img class="light" src="{{asset('landing/images/logowhite.png')}}" alt="Cp Aluminium"> <img class="dark" src="{{asset('landing/images/logodark.png')}}" alt="Cp GoAluminiumld"> </a> </div>
+        <div class="col-sm-4 logo"> <a href="/" title="Cp Aluminium"> <img class="light" src="{{asset('landing/images/logowhite.png')}}" alt="Cp Aluminium"> <img class="dark" src="{{asset('landing/images/logodark.png')}}" alt="Cp GoAluminiumld"> </a> </div>
         <div class="col-sm-8 main-menu">
           <div class="menu-icon"> <span class="top"></span> <span class="middle"></span> <span class="bottom"></span> </div>
           <nav>
             <ul>
-              <li><a href="/coindeoro.com">Home</a></li>
-              <li><a href="/coindeoro#about">About ico</a></li>
-              <li><a href="/coin#token">token</a></li>
-              <li><a href="/coin#roadmap">roadmap</a></li>
-              <li><a href="/coin#team">team</a></li>
-              <li><a href="/coin#press">press</a></li>
+              <li><a href="/">Home</a></li>
+              <li><a href="/#about">About ico</a></li>
+              <li><a href="/#token">token</a></li>
+              <li><a href="/#roadmap">roadmap</a></li>
+              <li><a href="/#team">team</a></li>
+              <li><a href="/#press">press</a></li>
               <li class="nav-btn"><a href="">Sign In</a></li>
             </ul>
           </nav>

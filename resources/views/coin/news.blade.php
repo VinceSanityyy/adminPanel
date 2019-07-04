@@ -1,5 +1,6 @@
 @extends('coin.app')
 @extends('coin.graph')
+@extends('coin.road')
 
 @section('content')
 {{-- SLIDER --}}
@@ -12,7 +13,7 @@
 
              <div class="row blogmain">
                 <div class="blog-slider style-2 owl-carousel" >
-                        @foreach ($news->take(5) as $data)
+                        @foreach ($news->slice(1) as $data)
                     <div class="item">
                             <div class="blog-list">
                         <div class="title">
