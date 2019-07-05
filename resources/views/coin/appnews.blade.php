@@ -21,6 +21,8 @@
 <link rel="stylesheet" href="{{asset('landing/css/owl.carousel.min.css')}}" type="text/css"/>
 <link rel="stylesheet" href="{{asset('landing/style.css')}}" type="text/css"/>
 <link rel="stylesheet" href="{{asset('landing/css/responsive.css')}}" type="text/css"/>
+{{-- custom style --}}
+<link rel="stylesheet" href="{{asset('landing/css/styles.css')}}" type="text/css"/>
 </head>
 <body class="single-post">
 <!--Main Wrapper Start-->

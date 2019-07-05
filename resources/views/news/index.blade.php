@@ -37,12 +37,12 @@
 
         <td>
 
-        <a href="/news/{{$data->id}}/edit" class="btn btn-warning">Edit</a>
+        <a href="/news/{{$data->id}}/edit" class="btn btn-warning"><span class="glyphicon glyphicon-pencil"></span></a>
 
-        <a href="/news/{{$data->id}}" class="btn btn-primary">Show</a>
+        <a href="/news/{{$data->id}}" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></a>
 
         {!! Form::open(['method' => 'DELETE', 'route'=>['news.destroy', $data->id], 'style'=> 'display:inline', 'onsubmit' => 'return confirm("Are you sure you want to delete?")']) !!}
-        {!! Form::submit('Delete',['class'=> 'btn btn-danger', ]) !!}
+        {!! Form::button('<i class="fa fa-trash"></i>',['type'=>'submit', 'class'=> 'btn btn-danger']) !!}
         {!! Form::close() !!}</td>
 
 

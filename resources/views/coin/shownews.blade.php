@@ -34,8 +34,12 @@
                   </div>
 
                   <a href="{{ url('/') }}"></span>Back to home</a>
+                  <br><br><br>
 
 
+                  <h4 class="comments-title" > <span class="fas fa-comment-alt"></span>
+                    {{$news->comments()->count()}}
+                    Comments</h4>
                   {{-- <div class="post-tags-list">
                         <a href="#" class="tag-cloud-link">Bitcoin</a>
                         <a href="#" class="tag-cloud-link">Blockchain</a>
@@ -45,33 +49,76 @@
                         <a href="#" class="tag-cloud-link">Investment</a>
                         <a href="#" class="tag-cloud-link">Marketing</a>
                   </div> --}}
+                  <div class="row" >
+                      <div class="col-md-12 col-md-offset-2" style="overflow-y: scroll; height: 400px;
+                      width: 400px; "  >
+
+                          @foreach($news->comments as $comment)
+                            <div class="comment" style="background-color: #f6efef;" >
+                          <div class="author-info">
+                              <img src={{"https://www.gravatar.com/avatar/" . md5(strtolower(trim($comment->email))) . "?s=50&d=retro" }} class="author-image" id="image">
+
+                              <div class="author-name">
+                                   <h4>{{$comment->name}} </h4>
+                                   <p class="author-time"> {{  date('F nS, Y - g:iA' ,strtotime($comment->created_at)) }}</p>
+                              </div>
+                          </div>
+                            <div class="comment-content">
+                                    {{$comment->comment}}
+                            </div>
+                            </div>
+                          @endforeach
+                      </div>
+                  </div>
+
+
+
+                  {{-- COMMENTS --}}
                   <div id="comments" class="comments-area">
                     <div id="respond" class="comment-respond">
                       <h3 id="reply-title" class="comment-reply-title">
                         <div class="leave-a-comment-title">Leave a <span>comment </span></div>
-                        <small><a rel="nofollow" id="cancel-comment-reply-link" href="#" style="display:none;">Cancel reply</a></small>
+                        {{-- <small><a rel="nofollow" id="cancel-comment-reply-link" href="#" style="display:none;">Cancel reply</a></small> --}}
                       </h3>
-                      <form action="#" method="post" id="commentform" class="comment-form" novalidate="">
+                      @if(count($errors) > 0)
+                      <div class="alert alert-danger">
+                        <strong>Whooops!! </strong> There were some problems with your input.<br>
+                        <ul>
+                          @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                          @endforeach
+                        </ul>
+                      </div>
+                    @endif
+                    {!! Form::open(['route'=>['comments.store', $news->id], 'method'=>'POST']) !!}
+                      {{-- <form action="#" method="post" id="commentform" class="comment-form" novalidate=""> --}}
                         <div class="row">
                           <div class="col-md-4 col-12 form-group">
-                            <input type="text" name="author" id="comment-author" value="" size="22" tabindex="1" aria-required="true" placeholder="Name *">
+                           {!! Form::label('name', 'Name:') !!}
+                           {!! Form::text('name', null, ['class'=>'form-control'])!!}
                           </div>
                           <div class="col-md-4 col-12 form-group">
-                            <input type="text" name="email" id="comment-email" value="" size="22" tabindex="2" aria-required="true" placeholder="e-Mail *">
+                            {{Form::label('email', 'Email:') }}
+                            {!!Form::text('email', null, ['class'=>'form-control'])!!}
                           </div>
                         </div>
                         <div class="row">
                           <div class="col-12 form-group">
-                            <textarea name="comment" id="comment" cols="58" rows="10" tabindex="4" placeholder="Comment *"></textarea>
+                            {!! Form::label('comment', 'Comment:') !!}
+                            {!! Form::textarea('comment', null, ['class'=>'form-control'])!!}
+
+
                           </div>
                         </div>
                         <div class="form-submit">
-                          <button name="submit" type="submit" id="submit" class="btn" value="Send Comment">Send Comment</button>
+                          {!!Form::submit ('Add Comment', ['class'=>'btn btn-warning'])!!}
                         </div>
-                      </form>
+                      {{-- </form> --}}
+                      {!!Form::close()!!}
                     </div>
                   </div>
                 </article>
+
               </div>
               <div class="col-md-3 sidebar">
                     {{-- <img src="{{asset('img')}}/{{$news->image}}" height="300" alt=""> --}}
@@ -100,7 +147,7 @@
                                     </div>
                                     <div class="cp-rp-posts-text">
                                         <div class="cp-rp-posts-item">
-                                        <a href="/mainshow/{{$news->id}}">{{$news->title}}</a>
+                                        <a href="/article/{{$news->id}}">{{$news->title}}</a>
                                         </div>
                                         <div class="cp-rp-posts-date">{{ Carbon\Carbon::parse($news->created_at)->format('Y-m-d') }}</div>
                                     </div>

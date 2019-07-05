@@ -35,11 +35,11 @@
 
         <td>
 
-        <a href="/users/{{$user->id}}/edit" class="btn btn-warning">Edit</a>
-        <a href="/users/{{$user->id}}" class="btn btn-primary">Show</a>
+        <a href="/users/{{$user->id}}/edit" class="btn btn-warning"><span class="glyphicon glyphicon-pencil"></a>
+        <a href="/users/{{$user->id}}" class="btn btn-primary"><span class="glyphicon glyphicon-search"></a>
 
         {!! Form::open(['method' => 'DELETE', 'route'=>['users.destroy', $user->id], 'style'=> 'display:inline', 'onsubmit' => 'return confirm("Are you sure you want to delete?")']) !!}
-        {!! Form::submit('Delete',['class'=> 'btn btn-danger', ]) !!}
+        {!! Form::button('<i class="fa fa-trash"></i>',['type'=>'submit', 'class'=> 'btn btn-danger']) !!}
         {!! Form::close() !!}</td>
 
         </tr>
