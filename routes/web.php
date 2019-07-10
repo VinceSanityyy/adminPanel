@@ -97,5 +97,4 @@ Route::put('comments/{id}',['uses'=>'CommentsController@update', 'as' => 'commen
 Route::delete('comments/{id}',['uses'=>'CommentsController@destroy', 'as' => 'comments.destroy']);
 
 
-
-
+Route::post('/newses', ['uses'=>'NewsController@showNews']);

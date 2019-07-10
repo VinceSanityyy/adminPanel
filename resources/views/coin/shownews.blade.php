@@ -40,18 +40,9 @@
                   <h4 class="comments-title" > <span class="fas fa-comment-alt"></span>
                     {{$news->comments()->count()}}
                     Comments</h4>
-                  {{-- <div class="post-tags-list">
-                        <a href="#" class="tag-cloud-link">Bitcoin</a>
-                        <a href="#" class="tag-cloud-link">Blockchain</a>
-                        <a href="#" class="tag-cloud-link">Cryptocurrency</a>
-                        <a href="#" class="tag-cloud-link">Ethereum</a>
-                        <a href="#" class="tag-cloud-link">ICO</a>
-                        <a href="#" class="tag-cloud-link">Investment</a>
-                        <a href="#" class="tag-cloud-link">Marketing</a>
-                  </div> --}}
                   <div class="row" >
                       <div class="col-md-12 col-md-offset-2" style="overflow-y: scroll; height: 400px;
-                      width: 400px; "  >
+                      width: 400px; " id="commentarea" >
 
                           @foreach($news->comments as $comment)
                             <div class="comment" style="background-color: #f6efef;" >
@@ -111,7 +102,7 @@
                           </div>
                         </div>
                         <div class="form-submit">
-                          {!!Form::submit ('Add Comment', ['class'=>'btn btn-warning'])!!}
+                          {!!Form::submit ('Add Comment', ['class'=>'btn btn-warning'], ['id' => 'ajaxSubmit'])!!}
                         </div>
                       {{-- </form> --}}
                       {!!Form::close()!!}
@@ -121,23 +112,11 @@
 
               </div>
               <div class="col-md-3 sidebar">
-                    {{-- <img src="{{asset('img')}}/{{$news->image}}" height="300" alt=""> --}}
-                {{-- <div class="widget-area">
-                  <aside id="categories-1" class="widget widget_categories">
-                    <h4 class="widget-title">Categories</h4>
-                    <ul>
-                      <li><a href="#" title="View all posts filed under BitCoin">BitCoin</a></li>
-                      <li><a href="#" title="View all posts filed under ICO &amp; Cryptocurrency">ICO &amp; Cryptocurrency</a></li>
-                      <li><a href="#" title="View all posts filed under Investment">Investment</a></li>
-                      <li><a href="#" title="View all posts filed under Marketing">Marketing</a></li>
-                      <li><a href="#" title="View all posts filed under Tokens">Tokens</a></li>
-                      <li><a href="#" title="View all posts filed under Uncategorized">Uncategorized</a></li>
-                    </ul>
-                  </aside> --}}
-                  <aside id="recent_posts-1" class="widget Recent_Posts">
+                  <aside id="recent_posts-1" class="widget Recent_Posts"  >
                       <h4 class="widget-title">Recent news</h4>
-                        <ul class="posts  styled">
-                            @foreach($all->slice(3) as $news)
+                        <ul class="posts  styled" style="overflow-y: scroll; height: 400px;
+                        width: 400px; ">
+                            @foreach($all->slice(2) as $news)
                             <li>
                                 <div class="cp-rp-posts-image">
                                         <a href="/article/{{$news->id}}">
@@ -155,18 +134,6 @@
                             @endforeach
                         </ul>
                     </aside>
-                  {{-- <aside id="tag_cloud-1" class="widget widget_tag_cloud">
-                    <h4 class="widget-title">Tags</h4>
-                    <div class="tagcloud">
-                          <a href="#" class="tag-cloud-link">Bitcoin</a>
-                        <a href="#" class="tag-cloud-link">Blockchain</a>
-                        <a href="#" class="tag-cloud-link">Cryptocurrency</a>
-                        <a href="#" class="tag-cloud-link">Ethereum</a>
-                        <a href="#" class="tag-cloud-link">ICO</a>
-                        <a href="#" class="tag-cloud-link">Investment</a>
-                        <a href="#" class="tag-cloud-link">Marketing</a>
-                    </div>
-                  </aside> --}}
                 </div>
               </div>
             </div>
@@ -177,5 +144,54 @@
 
         <!-- Token Sale end -->
       </div>
+
+{{-- <script>
+function autoRefresh_div() {
+    $("#commentarea").load('/article/' + {{$news->id}});
+}
+setInterval(autoRefresh_div, 5000);
+autoRefresh_div();
+</script> --}}
+
+
+
+<script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+{{--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script>
+         jQuery(document).ready(function(){
+            jQuery('#ajaxSubmit').click(function(e){
+               e.preventDefault();
+               $.ajaxSetup({
+                  headers: {
+                      'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                  }
+              });
+               jQuery.ajax({
+                  url: 'article' + {{$news->id}} ,
+                  method: 'post',
+                  data: {
+                     name: jQuery('#name').val(),
+                     email: jQuery('#email').val(),
+                     comment: jQuery('#comment').val()
+                  },
+                  success: function(result){
+
+                  }});
+               });
+            });
+
+
+    </script> --}}
 
 @endsection

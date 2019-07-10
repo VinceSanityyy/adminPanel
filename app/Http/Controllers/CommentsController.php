@@ -61,8 +61,8 @@ class CommentsController extends Controller
 
         $comment->save();
 
-        Session::flash('success', "Comment Added! ");
 
+        // return $comment->toJson();
 
         return redirect()->route('article', [$news->id]);
 

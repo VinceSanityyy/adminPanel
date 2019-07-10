@@ -100,6 +100,7 @@ class NewsController extends Controller
     public function show($id)
     {
         //
+
         $news = News::find($id);
         return view('news.show', compact('news'));
     }
@@ -127,12 +128,7 @@ class NewsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-        // request()->validate([
-        //     'title' => 'required',
-        //     'body' => 'required',
-        //     'image' => 'required',
-        //   ]);
+
 
         //   News::find($id)->update($request->all());
         $this->validate($request, array(
@@ -144,16 +140,12 @@ class NewsController extends Controller
         ));
         $news = News::find($id);
 
-        // if($request->hasFile('image')){
-        //     $request->image->store('public/img');
-        //     // $news->save();
-        //     $imageName = $request->image->store('public/img');
-        // }
+
 
         $news->title = $request->title;
         $news->subtitle = $request->subtitle;
         $news->body = $request->body;
-        // $news->image = $request->image;
+
         if ($request->hasFile('image')){
             //Add new photo
                 $image = $request->file('image');
@@ -162,11 +154,8 @@ class NewsController extends Controller
                 Image::make($image)->resize(300,300)->save($location);
 
                 $oldFilename = $news->image;
-            //Update DB
-                $news->image = $filename;
 
-             //Delete the old photo
-                // Storage::delete($oldFilename);
+                $news->image = $filename;
             }
 
         $news->save();
@@ -191,9 +180,7 @@ class NewsController extends Controller
     {
 
         $all = DB::table('news')->get();
-
         $news = News::find($id);
-       // return view('coin.shownews', compact('news'));
         return View::make('coin.shownews', compact('news','all'));
     }
 }

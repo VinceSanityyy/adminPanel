@@ -23,6 +23,10 @@
 <link rel="stylesheet" href="{{asset('landing/css/responsive.css')}}" type="text/css"/>
 {{-- custom style --}}
 <link rel="stylesheet" href="{{asset('landing/css/styles.css')}}" type="text/css"/>
+
+
+ <!-- CSRF Token -->
+ <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body class="single-post">
 <!--Main Wrapper Start-->

@@ -83,30 +83,6 @@
 
 
 
-    <!-- delete modal -->
-    <div class="modal fade bd-example-modal-sm" id="exampleModalCenter_delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalCenterTitle">Confirmation</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              </button>
-              <form action="{{route('comments.destroy', $comment->id)}}">
-                    {{method_field('delete')}}
-                    {{csrf_field()}}
-                </form>
-            </div>
-            <div class="modal-body">
-          <p style="font-weight: bold; text-align: center;"> Do you want to delete the selected Comment? </p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-primary" data-dismiss="modal">Back</button>
-              <button type="button" class="btn btn-danger" id="delete-button">Delete</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
 
   @endsection
 
