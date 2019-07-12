@@ -31,12 +31,9 @@ class GraphController extends Controller
 
 
 
-        $chart = Charts::database(Graph::all(), 'line', 'highcharts')
-                   ->Colors(['#ff0000', '#00ff00', '#0000ff'])
-                  ->groupByYear()
-			      ->responsive(false);
 
-        return view('coin.news',compact('chart','news','graphdetails','allroad'));
+
+        return view('coin.news',compact('news','graphdetails','allroad'));
     }
 
     /**

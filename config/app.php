@@ -182,6 +182,7 @@ return [
 
 
        ConsoleTVs\Charts\ChartsServiceProvider::class,
+       Barryvdh\Debugbar\ServiceProvider::class,
 
     ],
 
@@ -239,6 +240,7 @@ return [
 
         // 'Charts' => ConsoleTVs\Charts\Facades\Charts::class,
         'Charts' => ConsoleTVs\Charts\Charts::class,
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
 
         'Image' => Intervention\Image\Facades\Image::class,
     ],

@@ -56,9 +56,12 @@
                     <td>
                     <a href="{{route('comments.edit', $comment->id)}}" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-pencil"></span></a>
 
-                    {{-- <a id="{{$comment->id}}" class="btn btn-xs btn-danger" data-toggle="modal" data-target="#exampleModalCenter_delete"><span class="glyphicon glyphicon-trash"></span></a> --}}
 
-                    <button id="{{$comment->id}}" type="button" class="btn btn-xs btn-danger delete-data" data-toggle="modal" data-target="#exampleModalCenter_delete"><span class="glyphicon glyphicon-trash"></span></button>
+
+                    {{-- <button id="{{$comment->id}}" type="button" class="btn btn-xs btn-danger delete-data" data-toggle="modal" data-target="#exampleModalCenter_delete"><span class="glyphicon glyphicon-trash"></span></button> --}}
+                    {!! Form::open(['method' => 'DELETE', 'route'=>['comments.destroy', $comment->id], 'style'=> 'display:inline', 'onsubmit' => 'return confirm("Are you sure you want to delete?")']) !!}
+                    {!! Form::button('<i class="fa fa-trash"></i>',['type'=>'submit', 'class'=> 'btn btn-xs btn-danger']) !!}
+                    {!! Form::close() !!}</td>
 
                     </td>
 
@@ -85,13 +88,3 @@
 
 
   @endsection
-
-@section('scripts')
-      <script>
-        $(document).ready(function(){
-
-    });
-      </script>
-
-
-@endsection

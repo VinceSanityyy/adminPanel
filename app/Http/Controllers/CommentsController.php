@@ -130,6 +130,10 @@ class CommentsController extends Controller
     //     return response()->json([
     //     'success' => 'Record deleted successfully!'
     // ]);
-    echo 'Deleted';
+    // echo 'Deleted';
+
+    Comment::find($id)->delete();
+    // return redirect()->route('news.index')->with('success','News deleted successfully');
+    return back()->with('success', 'Deletes Successfully');
     }
 }

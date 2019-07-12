@@ -182,5 +182,14 @@ class NewsController extends Controller
         $all = DB::table('news')->get();
         $news = News::find($id);
         return View::make('coin.shownews', compact('news','all'));
+
+    }
+
+
+    public function commentData($id)
+    {
+        $all = DB::table('news')->get();
+        $news = News::find($id);
+        return view('coin.comments', compact('news', 'all'))->render();
     }
 }

@@ -25,9 +25,13 @@
                       <span class="post-meta-author">
                         <span>By</span>
                         <span class="post-meta-author-link"><a href="#">Admin</a></span>
+
                       </span>
+
+
                     </div>
                     <div class="img-wrapper">
+                            <span class="badge badge-success">Published</span>
                       <img src="{{asset('landing/images/blog-img1.jpg')}}" alt="" />
                     </div>
                 <p>{{$news->body}}</p>
@@ -36,29 +40,13 @@
                   <a href="{{ url('/') }}"></span>Back to home</a>
                   <br><br><br>
 
-
                   <h4 class="comments-title" > <span class="fas fa-comment-alt"></span>
                     {{$news->comments()->count()}}
                     Comments</h4>
                   <div class="row" >
                       <div class="col-md-12 col-md-offset-2" style="overflow-y: scroll; height: 400px;
                       width: 400px; " id="commentarea" >
-
-                          @foreach($news->comments as $comment)
-                            <div class="comment" style="background-color: #f6efef;" >
-                          <div class="author-info">
-                              <img src={{"https://www.gravatar.com/avatar/" . md5(strtolower(trim($comment->email))) . "?s=50&d=retro" }} class="author-image" id="image">
-
-                              <div class="author-name">
-                                   <h4>{{$comment->name}} </h4>
-                                   <p class="author-time"> {{  date('F nS, Y - g:iA' ,strtotime($comment->created_at)) }}</p>
-                              </div>
-                          </div>
-                            <div class="comment-content">
-                                    {{$comment->comment}}
-                            </div>
-                            </div>
-                          @endforeach
+                        @include('coin.comments')
                       </div>
                   </div>
 
@@ -86,17 +74,17 @@
                         <div class="row">
                           <div class="col-md-4 col-12 form-group">
                            {!! Form::label('name', 'Name:') !!}
-                           {!! Form::text('name', null, ['class'=>'form-control'])!!}
+                           {!! Form::text('name', null, ['class'=>'form-control','required'])!!}
                           </div>
                           <div class="col-md-4 col-12 form-group">
                             {{Form::label('email', 'Email:') }}
-                            {!!Form::text('email', null, ['class'=>'form-control'])!!}
+                            {!!Form::text('email', null, ['class'=>'form-control','required'])!!}
                           </div>
                         </div>
                         <div class="row">
                           <div class="col-12 form-group">
                             {!! Form::label('comment', 'Comment:') !!}
-                            {!! Form::textarea('comment', null, ['class'=>'form-control'])!!}
+                            {!! Form::textarea('comment', null, ['class'=>'form-control','required'])!!}
 
 
                           </div>
@@ -145,53 +133,30 @@
         <!-- Token Sale end -->
       </div>
 
-{{-- <script>
-function autoRefresh_div() {
-    $("#commentarea").load('/article/' + {{$news->id}});
-}
-setInterval(autoRefresh_div, 5000);
-autoRefresh_div();
-</script> --}}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+  <script>
+        $(document).ready(function() {
+         setInterval(function() {
+            var page = window.location.href;
+
+           $.ajax({
+           url: page+'/comment',
+           success:function(data)
+           {
+            $('#commentarea').html(data);
+           }
+           });
+         }, 5000);
+       });
+</script>
 
 
 
-<script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
 
 
 
 
-
-
-
-
-
-
-{{--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script>
-         jQuery(document).ready(function(){
-            jQuery('#ajaxSubmit').click(function(e){
-               e.preventDefault();
-               $.ajaxSetup({
-                  headers: {
-                      'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-                  }
-              });
-               jQuery.ajax({
-                  url: 'article' + {{$news->id}} ,
-                  method: 'post',
-                  data: {
-                     name: jQuery('#name').val(),
-                     email: jQuery('#email').val(),
-                     comment: jQuery('#comment').val()
-                  },
-                  success: function(result){
-
-                  }});
-               });
-            });
-
-
-    </script> --}}
 
 @endsection

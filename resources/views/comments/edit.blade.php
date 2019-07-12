@@ -25,7 +25,7 @@
                  {!! Form::text('email',null, ['class'=>'form-control', 'disabled'=> 'disabled']) !!}
 
                  {!! Form::label('comment', 'Comment:') !!}
-                 {!! Form::textarea('comment',null, ['class'=>'form-control']) !!}
+                 {!! Form::textarea('comment',null, ['class'=>'form-control' ,'required']) !!}
                 <br>
 
                 <a class="btn btn-success" href="{{ URL::previous() }}">Return</a>
