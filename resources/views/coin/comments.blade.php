@@ -1,4 +1,4 @@
-
+{{--
 @foreach($news->comments as $comment)
 <div class="comment" style="background-color: #f6efef;" >
 <div class="author-info">
@@ -15,4 +15,7 @@
 </div>
 @endforeach
 
+ --}}
+
+ <div id="disqus_thread"></div>
 

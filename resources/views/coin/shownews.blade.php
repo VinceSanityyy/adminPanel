@@ -40,62 +40,18 @@
                   <a href="{{ url('/') }}"></span>Back to home</a>
                   <br><br><br>
 
-                  <h4 class="comments-title" > <span class="fas fa-comment-alt"></span>
-                    {{$news->comments()->count()}}
-                    Comments</h4>
+
                   <div class="row" >
-                      <div class="col-md-12 col-md-offset-2" style="overflow-y: scroll; height: 400px;
-                      width: 400px; " id="commentarea" >
-                        @include('coin.comments')
+                      <div class="col-md-12 col-md-offset-2"  id="commentarea" >
+
+
                       </div>
                   </div>
 
 
 
                   {{-- COMMENTS --}}
-                  <div id="comments" class="comments-area">
-                    <div id="respond" class="comment-respond">
-                      <h3 id="reply-title" class="comment-reply-title">
-                        <div class="leave-a-comment-title">Leave a <span>comment </span></div>
-                        {{-- <small><a rel="nofollow" id="cancel-comment-reply-link" href="#" style="display:none;">Cancel reply</a></small> --}}
-                      </h3>
-                      @if(count($errors) > 0)
-                      <div class="alert alert-danger">
-                        <strong>Whooops!! </strong> There were some problems with your input.<br>
-                        <ul>
-                          @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                          @endforeach
-                        </ul>
-                      </div>
-                    @endif
-                    {!! Form::open(['route'=>['comments.store', $news->id], 'method'=>'POST']) !!}
-                      {{-- <form action="#" method="post" id="commentform" class="comment-form" novalidate=""> --}}
-                        <div class="row">
-                          <div class="col-md-4 col-12 form-group">
-                           {!! Form::label('name', 'Name:') !!}
-                           {!! Form::text('name', null, ['class'=>'form-control','required'])!!}
-                          </div>
-                          <div class="col-md-4 col-12 form-group">
-                            {{Form::label('email', 'Email:') }}
-                            {!!Form::text('email', null, ['class'=>'form-control','required'])!!}
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-12 form-group">
-                            {!! Form::label('comment', 'Comment:') !!}
-                            {!! Form::textarea('comment', null, ['class'=>'form-control','required'])!!}
-
-
-                          </div>
-                        </div>
-                        <div class="form-submit">
-                          {!!Form::submit ('Add Comment', ['class'=>'btn btn-warning'], ['id' => 'ajaxSubmit'])!!}
-                        </div>
-                      {{-- </form> --}}
-                      {!!Form::close()!!}
-                    </div>
-                  </div>
+                  <div id="disqus_thread"></div>
                 </article>
 
               </div>
@@ -127,12 +83,13 @@
             </div>
           </div>
         </div>
+
         <!-- Benefits End -->
         <!-- Token Sale start -->
 
         <!-- Token Sale end -->
       </div>
-
+{{--
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
   <script>
@@ -149,7 +106,7 @@
            });
          }, 5000);
        });
-</script>
+</script> --}}
 
 
 

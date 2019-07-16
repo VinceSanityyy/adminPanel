@@ -183,7 +183,7 @@ return [
 
        ConsoleTVs\Charts\ChartsServiceProvider::class,
        Barryvdh\Debugbar\ServiceProvider::class,
-
+       Yajra\Disqus\DisqusServiceProvider::class,
     ],
 
     /*

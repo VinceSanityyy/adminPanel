@@ -35,7 +35,7 @@
 
   </form>
 
-  <div class="backend-comments">
+  {{-- <div class="backend-comments">
         <table id="tables" class="table table-hover">
             <h3>Comments <small>{{$news->comments()->count()}}
             </small></h3>
@@ -58,7 +58,7 @@
 
 
 
-                    {{-- <button id="{{$comment->id}}" type="button" class="btn btn-xs btn-danger delete-data" data-toggle="modal" data-target="#exampleModalCenter_delete"><span class="glyphicon glyphicon-trash"></span></button> --}}
+
                     {!! Form::open(['method' => 'DELETE', 'route'=>['comments.destroy', $comment->id], 'style'=> 'display:inline', 'onsubmit' => 'return confirm("Are you sure you want to delete?")']) !!}
                     {!! Form::button('<i class="fa fa-trash"></i>',['type'=>'submit', 'class'=> 'btn btn-xs btn-danger']) !!}
                     {!! Form::close() !!}</td>
@@ -71,16 +71,11 @@
               </table>
 
 
-  <script>
-        $(document).ready(function() {
-          $('#tables').DataTable();
 
-      } );
-       </script>
-
-    </div>
+    </div> --}}
 
     <a class="btn btn-success" href="{{ route('news.index') }}">Return</a>
+    <a class="btn btn-primary" href="https://coindeoro.disqus.com/admin/">Show Comments in Disqus</a>
 
 
 
