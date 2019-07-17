@@ -75,7 +75,7 @@
     </div> --}}
 
     <a class="btn btn-success" href="{{ route('news.index') }}">Return</a>
-    <a class="btn btn-primary" href="https://coindeoro.disqus.com/admin/">Show Comments in Disqus</a>
+    <a class="btn btn-primary" href="https://disqus.com/">Show Comments in Disqus</a>
 
 
 
