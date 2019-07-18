@@ -113,12 +113,12 @@
                                 </div>
                             </div>
                             <div class="we-accept-section">
-                                <h5>We accept:</h5>
+
                                 <ul>
-                                    <li><span><i class="fab fa-paypal"></i></span></li>
-                                    <li><span><i class="fab fa-btc"></i></span></li>
-                                    <li><span><i class="fab fa-ethereum"></i></span></li>
-                                    <li><span><i class="fa fa-credit-card"></i></span></li>
+                                <br><br>
+                                <a href=""><img src="{{asset('landing/images/appstore.png')}} " width="280" height="80" alt="" style='padding-left : 10px' ></a>
+
+                                <a href=""> <img src="{{asset('landing/images/playstore.png')}}" width="280" height="80" alt="" style='padding-left : 10px' ></a>
                                 </ul>
                             </div>
                         </div>
